@@ -1,0 +1,245 @@
+.invitation-panel {
+  width: 100%;
+  max-width: 24rem;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+@keyframes invitation-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes invitation-fade-only {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.invitation-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.85rem 1.65rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(220, 230, 255, 0.24);
+  background: rgba(9, 13, 24, 0.56);
+  color: var(--color-text-primary);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 24px rgba(220, 230, 255, 0.08);
+  animation: invitation-enter 440ms var(--ease-standard) both;
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.invitation-cta-button:hover {
+  border-color: rgba(220, 230, 255, 0.52);
+  background: rgba(16, 23, 41, 0.72);
+  box-shadow: 0 0 28px rgba(220, 230, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+.invitation-cta-button:active {
+  transform: scale(0.98);
+}
+
+.invitation-cta-glyph {
+  color: var(--color-accent-warm);
+  font-size: 0.85em;
+  line-height: 1;
+}
+
+.invitation-form-surface {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(220, 230, 255, 0.14);
+  background: rgba(8, 12, 22, 0.62);
+  backdrop-filter: blur(10px);
+  animation: invitation-enter 320ms var(--ease-standard) both;
+}
+
+.invitation-prompt {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  line-height: var(--leading-snug);
+  color: var(--color-text-primary);
+}
+
+.invitation-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  text-align: left;
+}
+
+.invitation-label {
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.invitation-input-row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: stretch;
+}
+
+.invitation-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.68rem 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+  background: rgba(5, 7, 13, 0.75);
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.06em;
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+
+.invitation-input::placeholder {
+  font-family: var(--font-sans);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-text-muted);
+}
+
+.invitation-input:hover:not(:disabled) {
+  border-color: var(--color-border-strong);
+}
+
+.invitation-input:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-color: var(--color-accent-starlight);
+}
+
+.invitation-input[aria-invalid='true'] {
+  border-color: rgba(244, 172, 172, 0.72);
+}
+
+.invitation-submit {
+  flex-shrink: 0;
+  padding: 0.68rem 1.15rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(220, 230, 255, 0.34);
+  background: rgba(220, 230, 255, 0.12);
+  color: var(--color-text-primary);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard),
+    opacity var(--duration-fast) var(--ease-standard);
+}
+
+.invitation-submit:hover:not(:disabled) {
+  background: rgba(220, 230, 255, 0.22);
+  border-color: rgba(220, 230, 255, 0.56);
+}
+
+.invitation-submit:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.invitation-submit:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.invitation-feedback {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+  font-size: var(--text-xs);
+  line-height: var(--leading-snug);
+  color: #f4b8b8;
+  text-align: left;
+}
+
+.invitation-feedback-marker {
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+.invitation-accepted {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  animation: invitation-enter 360ms var(--ease-standard) both;
+}
+
+.invitation-accepted-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  color: var(--color-accent-warm);
+}
+
+.invitation-accepted-note {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 420px) {
+  .invitation-form-surface {
+    padding: var(--space-4);
+  }
+
+  .invitation-input-row {
+    flex-direction: column;
+  }
+
+  .invitation-submit {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .invitation-cta-button,
+  .invitation-form-surface,
+  .invitation-accepted {
+    animation: invitation-fade-only 180ms ease both;
+  }
+
+  .invitation-cta-button:hover,
+  .invitation-cta-button:active,
+  .invitation-submit:active:not(:disabled) {
+    transform: none;
+  }
+}

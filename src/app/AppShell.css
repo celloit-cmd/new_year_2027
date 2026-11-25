@@ -1,15 +1,14 @@
 .app-shell {
+  position: relative;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  background: radial-gradient(
-    circle at 50% 0%,
-    var(--color-bg-deep) 0%,
-    var(--color-bg-void) 70%
-  );
+  background-color: var(--color-bg-void);
 }
 
 .app-main {
+  position: relative;
+  z-index: 1;
   flex: 1;
   display: flex;
   flex-direction: column;

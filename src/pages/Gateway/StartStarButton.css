@@ -1,0 +1,148 @@
+.start-star-button {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-pill);
+  color: var(--color-accent-starlight);
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    opacity 260ms var(--ease-standard),
+    transform 260ms var(--ease-standard);
+}
+
+.start-star-emblem {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(5rem, 14vw, 6.5rem);
+  height: clamp(5rem, 14vw, 6.5rem);
+}
+
+.start-star-aura {
+  position: absolute;
+  inset: -38%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(220, 230, 255, 0.2) 0%,
+    rgba(243, 215, 164, 0.08) 40%,
+    rgba(5, 7, 13, 0) 72%
+  );
+  opacity: 0.72;
+  pointer-events: none;
+  transition:
+    opacity var(--duration-base) var(--ease-standard),
+    transform var(--duration-base) var(--ease-standard);
+}
+
+.start-star-svg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 14px rgba(220, 230, 255, 0.28));
+  transition:
+    transform var(--duration-base) var(--ease-standard),
+    filter var(--duration-base) var(--ease-standard);
+}
+
+.start-star-orbit {
+  transform-origin: 48px 48px;
+  transition:
+    transform 450ms var(--ease-standard),
+    opacity var(--duration-base) var(--ease-standard);
+}
+
+.start-star-label {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  padding-inline-start: 0.28em;
+  text-transform: uppercase;
+  color: rgba(220, 230, 255, 0.74);
+  transition:
+    color var(--duration-fast) var(--ease-standard),
+    opacity var(--duration-base) var(--ease-standard),
+    transform var(--duration-base) var(--ease-standard);
+}
+
+@keyframes star-aura-breathe {
+  0%,
+  100% {
+    opacity: 0.62;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.92;
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .start-star-button[data-phase='idle'] .start-star-aura {
+    animation: star-aura-breathe 4.2s ease-in-out infinite;
+  }
+}
+
+.start-star-button:hover:not(:disabled) .start-star-svg,
+.start-star-button:focus-visible:not(:disabled) .start-star-svg {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 22px rgba(236, 243, 255, 0.5));
+}
+
+.start-star-button:hover:not(:disabled) .start-star-orbit,
+.start-star-button:focus-visible:not(:disabled) .start-star-orbit {
+  transform: rotate(22deg) scale(1.05);
+  opacity: 0.95;
+}
+
+.start-star-button:hover:not(:disabled) .start-star-aura,
+.start-star-button:focus-visible:not(:disabled) .start-star-aura {
+  opacity: 1;
+  transform: scale(1.16);
+}
+
+.start-star-button:hover:not(:disabled) .start-star-label,
+.start-star-button:focus-visible:not(:disabled) .start-star-label {
+  color: var(--color-text-primary);
+}
+
+.start-star-button:active:not(:disabled) .start-star-svg {
+  transform: scale(0.93);
+  transition-duration: 90ms;
+}
+
+.start-star-button[data-phase='exploding'] {
+  opacity: 0;
+  transform: scale(1.22);
+  pointer-events: none;
+  cursor: default;
+}
+
+.start-star-button:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .start-star-button:hover:not(:disabled) .start-star-svg,
+  .start-star-button:focus-visible:not(:disabled) .start-star-svg,
+  .start-star-button:hover:not(:disabled) .start-star-orbit,
+  .start-star-button:focus-visible:not(:disabled) .start-star-orbit,
+  .start-star-button:hover:not(:disabled) .start-star-aura,
+  .start-star-button:focus-visible:not(:disabled) .start-star-aura,
+  .start-star-button:active:not(:disabled) .start-star-svg,
+  .start-star-button[data-phase='exploding'] {
+    transform: none;
+  }
+
+  .start-star-button[data-phase='exploding'] {
+    transition: opacity 180ms ease;
+  }
+}

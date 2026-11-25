@@ -53,6 +53,7 @@ export const ALLOWED_TRANSITIONS: Record<ExperienceStage, readonly ExperienceSta
 }
 
 export type ExperienceAction =
+  | { type: 'SELECT_RECIPIENT'; recipientId: RecipientId }
   | { type: 'ENTER_JOURNEY'; recipientId: RecipientId }
   | { type: 'GO_TO_STAGE'; stage: ExperienceStage }
   | { type: 'SET_YOUR_TURN_ENABLED'; enabled: boolean }
@@ -78,6 +79,15 @@ export function experienceReducer(
   action: ExperienceAction,
 ): ExperienceState {
   switch (action.type) {
+    case 'SELECT_RECIPIENT': {
+      if (state.stage !== 'gateway') {
+        return state
+      }
+      return {
+        ...state,
+        recipientId: action.recipientId,
+      }
+    }
     case 'ENTER_JOURNEY': {
       if (state.stage !== 'gateway') {
         return state
